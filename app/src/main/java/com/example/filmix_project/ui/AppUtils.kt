@@ -1,8 +1,11 @@
 package com.example.filmix_project.ui
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import com.example.filmix_project.MovieDetailsActivity
 import com.example.filmix_project.R
 
 @Composable
@@ -22,4 +25,10 @@ fun genreName(genre: String): String {
         else -> null
     }
     return if (id != null) stringResource(id) else genre
+}
+
+fun openMovie(context: Context, movieId: Int) {
+    val intent = Intent(context, MovieDetailsActivity::class.java)
+    intent.putExtra(MovieDetailsActivity.EXTRA_MOVIE_ID, movieId)
+    context.startActivity(intent)
 }

@@ -1,5 +1,6 @@
 package com.example.filmix_project
 
+import android.content.Intent
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.filmix_project.data.MovieRepository
 import com.example.filmix_project.ui.components.BottomTab
 import com.example.filmix_project.ui.components.FilmixBottomBar
+import com.example.filmix_project.ui.openMovie
 import com.example.filmix_project.ui.screens.HomeScreen
 import com.example.filmix_project.ui.screens.SearchScreen
 
@@ -41,6 +43,8 @@ fun AppRoot(modifier: Modifier = Modifier) {
                     if (selected == BottomTab.Home) {
                         searching = false
                         query = ""
+                    } else if (selected == BottomTab.Favorites) {
+                        context.startActivity(Intent(context, FavoritesActivity::class.java))
                     }
                 }
             )
@@ -53,14 +57,14 @@ fun AppRoot(modifier: Modifier = Modifier) {
                 query = query,
                 onQueryChange = { query = it },
                 results = repository.search(query),
-                onMovieClick = { },
+                onMovieClick = { movie -> openMovie(context, movie.id) },
                 modifier = contentModifier
             )
         } else {
             HomeScreen(
                 movies = movies,
                 onSearchClick = { searching = true },
-                onMovieClick = { },
+                onMovieClick = { movie -> openMovie(context, movie.id) },
                 modifier = contentModifier
             )
         }
