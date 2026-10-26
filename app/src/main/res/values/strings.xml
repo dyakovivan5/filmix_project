@@ -1,27 +1,40 @@
 <resources>
     <string name="app_name" translatable="false">Filmix</string>
     <string name="app_subtitle">Рекомендации фильмов</string>
+
     <string name="nav_home">Главная</string>
     <string name="nav_favorites">Избранное</string>
     <string name="nav_settings">Настройки</string>
+
     <string name="search_hint">Поиск фильма</string>
     <string name="recommended">Рекомендуем вам</string>
     <string name="popular">Популярное</string>
+
     <string name="search_title">Поиск</string>
     <string name="search_results">Результаты поиска</string>
     <string name="nothing_found">Фильмы не найдены</string>
+
     <string name="movie_title">Фильм</string>
     <string name="back">Назад</string>
     <string name="add_to_favorites">В избранное</string>
     <string name="in_favorites">В избранном</string>
     <string name="description">Описание</string>
     <string name="similar_movies">Похожие фильмы</string>
+
     <string name="favorites_title">Избранное</string>
     <string name="favorites_subtitle">Ваши сохранённые фильмы</string>
     <string name="favorites_empty">В избранном пока нет фильмов</string>
     <string name="for_you">Для вас</string>
     <string name="based_on_favorites">На основе избранного</string>
     <string name="you_may_like">Вам могут понравиться фильмы</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_language">Язык приложения</string>
+    <string name="settings_about">О приложении</string>
+    <string name="language_ru" translatable="false">Русский</string>
+    <string name="language_en" translatable="false">English</string>
+    <string name="about_stack" translatable="false">Kotlin • Jetpack Compose • SQLite</string>
+
     <string name="genre_sci_fi">Фантастика</string>
     <string name="genre_drama">Драма</string>
     <string name="genre_adventure">Приключения</string>

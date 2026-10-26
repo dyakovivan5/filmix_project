@@ -38,7 +38,22 @@ class MovieDbHelper(context: Context) :
             )
             """.trimIndent()
         )
+    }
 
+    override fun onOpen(db: SQLiteDatabase) {
+        super.onOpen(db)
+        if (!db.isReadOnly) {
+            saveMovies(db)
+        }
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_FAVORITES")
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_MOVIES")
+        onCreate(db)
+    }
+
+    private fun saveMovies(db: SQLiteDatabase) {
         for (movie in MovieSeed.movies) {
             val values = ContentValues().apply {
                 put(COLUMN_ID, movie.id)
@@ -51,19 +66,21 @@ class MovieDbHelper(context: Context) :
                 put(COLUMN_DESCRIPTION_EN, movie.descriptionEn)
                 put(COLUMN_POSTER, movie.posterResource)
             }
-            db.insert(TABLE_MOVIES, null, values)
+            val updated = db.update(
+                TABLE_MOVIES,
+                values,
+                "$COLUMN_ID = ?",
+                arrayOf(movie.id.toString())
+            )
+            if (updated == 0) {
+                db.insert(TABLE_MOVIES, null, values)
+            }
         }
-    }
-
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_FAVORITES")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_MOVIES")
-        onCreate(db)
     }
 
     companion object {
         private const val DB_NAME = "filmix.db"
-        private const val DB_VERSION = 1
+        private const val DB_VERSION = 2
 
         const val TABLE_MOVIES = "movies"
         const val TABLE_FAVORITES = "favorites"

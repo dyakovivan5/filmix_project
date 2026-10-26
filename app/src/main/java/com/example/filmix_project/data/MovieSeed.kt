@@ -7,7 +7,7 @@ object MovieSeed {
     val movies = listOf(
         Movie(
             id = 1,
-            titleRu = "Interstellar",
+            titleRu = "Интерстеллар",
             titleEn = "Interstellar",
             genre = "Sci-Fi,Drama,Adventure",
             year = 2014,
@@ -18,7 +18,7 @@ object MovieSeed {
         ),
         Movie(
             id = 2,
-            titleRu = "Inception",
+            titleRu = "Начало",
             titleEn = "Inception",
             genre = "Sci-Fi,Action,Thriller",
             year = 2010,
@@ -29,7 +29,7 @@ object MovieSeed {
         ),
         Movie(
             id = 3,
-            titleRu = "The Martian",
+            titleRu = "Марсианин",
             titleEn = "The Martian",
             genre = "Drama,Sci-Fi,Adventure",
             year = 2015,
@@ -40,7 +40,7 @@ object MovieSeed {
         ),
         Movie(
             id = 4,
-            titleRu = "Gravity",
+            titleRu = "Гравитация",
             titleEn = "Gravity",
             genre = "Drama,Sci-Fi,Thriller",
             year = 2013,
@@ -51,7 +51,7 @@ object MovieSeed {
         ),
         Movie(
             id = 5,
-            titleRu = "Dune",
+            titleRu = "Дюна",
             titleEn = "Dune",
             genre = "Sci-Fi,Action",
             year = 2021,
@@ -62,7 +62,7 @@ object MovieSeed {
         ),
         Movie(
             id = 6,
-            titleRu = "Arrival",
+            titleRu = "Прибытие",
             titleEn = "Arrival",
             genre = "Sci-Fi,Drama,Mystery",
             year = 2016,

@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.filmix_project.ui.components.BottomTab
 import com.example.filmix_project.ui.components.FilmixBottomBar
+import com.example.filmix_project.ui.openMain
 import com.example.filmix_project.ui.screens.FavoritesScreen
 import com.example.filmix_project.ui.theme.Filmix_projectTheme
 
@@ -32,8 +33,8 @@ class FavoritesActivity : ComponentActivity() {
                         FilmixBottomBar(
                             selected = BottomTab.Favorites,
                             onSelect = { tab ->
-                                if (tab == BottomTab.Home) {
-                                    finish()
+                                if (tab != BottomTab.Favorites) {
+                                    openMain(this@FavoritesActivity, tab)
                                 }
                             }
                         )
