@@ -1,47 +1,45 @@
 package com.example.filmix_project
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.mutableStateOf
+import com.example.filmix_project.ui.components.BottomTab
 import com.example.filmix_project.ui.theme.Filmix_projectTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val requestedTab = mutableStateOf<BottomTab?>(null)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        requestedTab.value = readTab(intent)
         setContent {
             Filmix_projectTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                AppRoot(
+                    requestedTab = requestedTab.value,
+                    onTabHandled = { requestedTab.value = null }
+                )
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        requestedTab.value = readTab(intent)
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Filmix_projectTheme {
-        Greeting("Android")
+    private fun readTab(intent: Intent): BottomTab? {
+        val name = intent.getStringExtra(EXTRA_TAB) ?: return null
+        intent.removeExtra(EXTRA_TAB)
+        return BottomTab.entries.firstOrNull { it.name == name }
+    }
+
+    companion object {
+        const val EXTRA_TAB = "tab"
     }
 }
