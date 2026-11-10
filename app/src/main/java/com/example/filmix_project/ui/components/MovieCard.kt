@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.filmix_project.domain.Movie
 import com.example.filmix_project.ui.currentLanguage
 import com.example.filmix_project.ui.genreName
+import com.example.filmix_project.ui.theme.TextSecondary
 
 @Composable
 fun MovieCard(
@@ -45,7 +46,7 @@ fun MovieCard(
         Text(
             text = "${movie.year} • ${genreName(movie.mainGenre)}",
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = TextSecondary,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
