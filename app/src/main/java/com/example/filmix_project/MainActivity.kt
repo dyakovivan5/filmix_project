@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableStateOf
 import com.example.filmix_project.ui.components.BottomTab
+import com.example.filmix_project.ui.enableDarkEdgeToEdge
 import com.example.filmix_project.ui.theme.Filmix_projectTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableDarkEdgeToEdge()
         requestedTab.value = readTab(intent)
         setContent {
             Filmix_projectTheme {

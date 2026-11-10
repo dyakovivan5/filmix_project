@@ -26,6 +26,8 @@ import com.example.filmix_project.ui.components.MoviesGrid
 import com.example.filmix_project.ui.components.ScreenTitle
 import com.example.filmix_project.ui.components.SectionTitle
 import com.example.filmix_project.ui.openMovie
+import com.example.filmix_project.ui.theme.CardBackground
+import com.example.filmix_project.ui.theme.TextSecondary
 
 @Composable
 fun FavoritesScreen(
@@ -51,7 +53,7 @@ fun FavoritesScreen(
         Text(
             text = stringResource(R.string.favorites_subtitle),
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = TextSecondary
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -59,7 +61,7 @@ fun FavoritesScreen(
             Text(
                 text = stringResource(R.string.favorites_empty),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         } else {
             MoviesGrid(
@@ -77,7 +79,7 @@ fun FavoritesScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant)
+                    .background(CardBackground)
                     .padding(16.dp)
             ) {
                 Text(
@@ -88,7 +90,7 @@ fun FavoritesScreen(
                 Text(
                     text = stringResource(R.string.you_may_like),
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TextSecondary
                 )
             }
 

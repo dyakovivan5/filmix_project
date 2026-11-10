@@ -21,6 +21,7 @@ import com.example.filmix_project.ui.openMovie
 import com.example.filmix_project.ui.screens.HomeScreen
 import com.example.filmix_project.ui.screens.SearchScreen
 import com.example.filmix_project.ui.screens.SettingsScreen
+import com.example.filmix_project.ui.theme.Background
 
 @Composable
 fun AppRoot(
@@ -52,6 +53,7 @@ fun AppRoot(
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
+        containerColor = Background,
         bottomBar = {
             FilmixBottomBar(
                 selected = tab,
