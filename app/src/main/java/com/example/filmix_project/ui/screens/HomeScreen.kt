@@ -30,6 +30,8 @@ import com.example.filmix_project.domain.Movie
 import com.example.filmix_project.ui.components.MoviesGrid
 import com.example.filmix_project.ui.components.ScreenTitle
 import com.example.filmix_project.ui.components.SectionTitle
+import com.example.filmix_project.ui.theme.CardBackground
+import com.example.filmix_project.ui.theme.TextSecondary
 
 @Composable
 fun HomeScreen(
@@ -52,7 +54,7 @@ fun HomeScreen(
         Text(
             text = stringResource(R.string.app_subtitle),
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = TextSecondary
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -61,7 +63,7 @@ fun HomeScreen(
                 .fillMaxWidth()
                 .height(48.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .background(CardBackground)
                 .clickable(onClick = onSearchClick)
                 .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -69,14 +71,14 @@ fun HomeScreen(
             Icon(
                 imageVector = Icons.Outlined.Search,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                tint = TextSecondary,
                 modifier = Modifier.size(18.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = stringResource(R.string.search_hint),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         }
 

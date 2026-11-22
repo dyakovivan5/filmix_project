@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,6 +29,10 @@ import com.example.filmix_project.R
 import com.example.filmix_project.domain.Movie
 import com.example.filmix_project.ui.components.MoviesGrid
 import com.example.filmix_project.ui.components.ScreenTitle
+import com.example.filmix_project.ui.theme.Accent
+import com.example.filmix_project.ui.theme.CardBackground
+import com.example.filmix_project.ui.theme.TextPrimary
+import com.example.filmix_project.ui.theme.TextSecondary
 
 @Composable
 fun SearchScreen(
@@ -62,19 +67,28 @@ fun SearchScreen(
             placeholder = {
                 Text(
                     text = stringResource(R.string.search_hint),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TextSecondary
                 )
             },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Outlined.Search,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    tint = TextSecondary,
                     modifier = Modifier.size(18.dp)
                 )
             },
             singleLine = true,
             shape = RoundedCornerShape(12.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = CardBackground,
+                unfocusedContainerColor = CardBackground,
+                focusedBorderColor = Accent,
+                unfocusedBorderColor = CardBackground,
+                focusedTextColor = TextPrimary,
+                unfocusedTextColor = TextPrimary,
+                cursorColor = Accent
+            )
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -82,13 +96,13 @@ fun SearchScreen(
             Text(
                 text = stringResource(R.string.nothing_found),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         } else {
             Text(
                 text = stringResource(R.string.search_results),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
             Spacer(modifier = Modifier.height(12.dp))
             MoviesGrid(movies = results, onMovieClick = onMovieClick)

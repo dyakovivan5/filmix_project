@@ -11,11 +11,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.filmix_project.R
+import com.example.filmix_project.ui.theme.Accent
+import com.example.filmix_project.ui.theme.CardBackground
+import com.example.filmix_project.ui.theme.DividerColor
+import com.example.filmix_project.ui.theme.TextSecondary
 
 enum class BottomTab {
     Home,
@@ -29,8 +36,11 @@ fun FilmixBottomBar(
     onSelect: (BottomTab) -> Unit
 ) {
     Column {
-        HorizontalDivider()
-        NavigationBar {
+        HorizontalDivider(color = DividerColor)
+        NavigationBar(
+            containerColor = CardBackground,
+            tonalElevation = 0.dp
+        ) {
             for (tab in BottomTab.entries) {
                 NavigationBarItem(
                     selected = tab == selected,
@@ -43,6 +53,13 @@ fun FilmixBottomBar(
                         )
                     },
                     alwaysShowLabel = true,
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = Accent,
+                        selectedTextColor = Accent,
+                        unselectedIconColor = TextSecondary,
+                        unselectedTextColor = TextSecondary,
+                        indicatorColor = Color.Transparent
+                    )
                 )
             }
         }

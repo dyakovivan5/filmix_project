@@ -20,6 +20,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -47,6 +48,9 @@ import com.example.filmix_project.ui.components.SectionTitle
 import com.example.filmix_project.ui.currentLanguage
 import com.example.filmix_project.ui.genreName
 import com.example.filmix_project.ui.openMovie
+import com.example.filmix_project.ui.theme.Accent
+import com.example.filmix_project.ui.theme.TextPrimary
+import com.example.filmix_project.ui.theme.TextSecondary
 
 @Composable
 fun MovieDetailsScreen(
@@ -105,7 +109,7 @@ fun MovieDetailsScreen(
             ) {
                 Text(
                     text = movie.mainGenre.uppercase(),
-                    color = Color.White,
+                    color = TextPrimary,
                     fontSize = 9.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
@@ -127,7 +131,7 @@ fun MovieDetailsScreen(
                 Text(
                     text = "${movie.year} • ${genreName(movie.mainGenre)}",
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TextSecondary
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
@@ -141,6 +145,10 @@ fun MovieDetailsScreen(
                         .fillMaxWidth()
                         .height(40.dp),
                     shape = RoundedCornerShape(8.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Accent,
+                        contentColor = TextPrimary
+                    )
                 ) {
                     Icon(
                         imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
@@ -164,7 +172,7 @@ fun MovieDetailsScreen(
         Text(
             text = movie.description(language),
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = TextSecondary
         )
 
         if (similar.isNotEmpty()) {

@@ -26,6 +26,9 @@ import com.example.filmix_project.ui.changeLanguage
 import com.example.filmix_project.ui.components.ScreenTitle
 import com.example.filmix_project.ui.components.SectionTitle
 import com.example.filmix_project.ui.currentLanguage
+import com.example.filmix_project.ui.theme.Accent
+import com.example.filmix_project.ui.theme.CardBackground
+import com.example.filmix_project.ui.theme.TextSecondary
 
 @Composable
 fun SettingsScreen(modifier: Modifier = Modifier) {
@@ -67,25 +70,25 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(12.dp))
-                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .background(CardBackground)
                 .padding(16.dp)
         ) {
             Text(
                 text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.primary
+                color = Accent
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(R.string.app_subtitle),
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(R.string.about_stack),
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         }
 
@@ -104,7 +107,7 @@ private fun LanguageRow(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(CardBackground)
             .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 18.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -117,7 +120,7 @@ private fun LanguageRow(
         Text(
             text = code,
             style = MaterialTheme.typography.titleMedium,
-            color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+            color = if (selected) Accent else TextSecondary
         )
     }
 }

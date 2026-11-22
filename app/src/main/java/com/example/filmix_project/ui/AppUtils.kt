@@ -3,7 +3,11 @@ package com.example.filmix_project.ui
 import android.app.LocaleManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.LocaleList
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -12,9 +16,21 @@ import com.example.filmix_project.MovieDetailsActivity
 import com.example.filmix_project.R
 import com.example.filmix_project.ui.components.BottomTab
 
+fun ComponentActivity.enableDarkEdgeToEdge() {
+    enableEdgeToEdge(
+        statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT),
+        navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
+    )
+}
+
 @Composable
 fun currentLanguage(): String {
     return LocalConfiguration.current.locales[0].language
+}
+
+fun changeLanguage(context: Context, language: String) {
+    val manager = context.getSystemService(LocaleManager::class.java)
+    manager.applicationLocales = LocaleList.forLanguageTags(language)
 }
 
 @Composable
@@ -29,11 +45,6 @@ fun genreName(genre: String): String {
         else -> null
     }
     return if (id != null) stringResource(id) else genre
-}
-
-fun changeLanguage(context: Context, language: String) {
-    val manager = context.getSystemService(LocaleManager::class.java)
-    manager.applicationLocales = LocaleList.forLanguageTags(language)
 }
 
 fun openMovie(context: Context, movieId: Int) {

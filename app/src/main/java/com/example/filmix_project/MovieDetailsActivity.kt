@@ -3,7 +3,6 @@ package com.example.filmix_project
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -11,7 +10,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.example.filmix_project.ui.enableDarkEdgeToEdge
 import com.example.filmix_project.ui.screens.MovieDetailsScreen
+import com.example.filmix_project.ui.theme.Background
 import com.example.filmix_project.ui.theme.Filmix_projectTheme
 
 class MovieDetailsActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MovieDetailsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableDarkEdgeToEdge()
 
         val movieId = intent.getIntExtra(EXTRA_MOVIE_ID, -1)
 
@@ -28,6 +29,7 @@ class MovieDetailsActivity : ComponentActivity() {
             Filmix_projectTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
+                    containerColor = Background
                 ) { innerPadding ->
                     MovieDetailsScreen(
                         movieId = movieId,
